@@ -860,7 +860,7 @@ export default function Home() {
                       onFocus={() => setIsFocused(true)}
                       onBlur={() => setIsFocused(false)}
                       placeholder="Enter website URL (e.g., stripe.com)"
-                      className="w-full px-14 py-5 glass rounded-2xl text-lg focus:border-accent/50 focus:ring-2 focus:ring-accent/20 smooth placeholder:text-secondary/50"
+                      className="w-full pl-14 pr-28 sm:pr-36 py-5 glass rounded-2xl text-lg focus:border-accent/50 focus:ring-2 focus:ring-accent/20 smooth placeholder:text-secondary/50"
                       disabled={loading}
                     />
                     <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-2">
