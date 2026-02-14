@@ -1194,12 +1194,9 @@ export default function Home() {
       <footer className="py-8 border-t border-white/5 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-secondary">
           <p>
-            Built with AI agents in a day
+            © 2026 StackRadar
           </p>
           <div className="flex items-center gap-4">
-            <span className="px-3 py-1 rounded-full bg-accent/10 text-accent border border-accent/20 text-xs font-bold">
-              Day 1/100
-            </span>
             <a
               href="https://twitter.com/rushirajjj"
               target="_blank"

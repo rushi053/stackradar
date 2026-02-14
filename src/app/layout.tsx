@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: "StackRadar — X-ray Any Website's Tech Stack in Seconds",
   description:
-    "Instantly detect frameworks, hosting, analytics, payments, and 150+ technologies used by any website. Free, fast, and open. Built with AI agents in a day.",
+    "Instantly detect frameworks, hosting, analytics, payments, and 150+ technologies used by any website. Free, fast, and open. Free, fast, and open-source..",
   keywords: [
     "tech stack detector",
     "website technology checker",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "StackRadar — X-ray Any Website's Tech Stack in Seconds",
     description:
-      "Instantly detect frameworks, hosting, analytics, payments, and 150+ technologies used by any website. Free, fast, and open. Built with AI agents in a day.",
+      "Instantly detect frameworks, hosting, analytics, payments, and 150+ technologies used by any website. Free, fast, and open. Free, fast, and open-source..",
     url: SITE_URL,
     siteName: "StackRadar",
     type: "website",
