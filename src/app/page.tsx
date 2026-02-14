@@ -859,7 +859,7 @@ export default function Home() {
                       onChange={(e) => setUrl(e.target.value)}
                       onFocus={() => setIsFocused(true)}
                       onBlur={() => setIsFocused(false)}
-                      placeholder="Enter website URL (e.g., stripe.com)"
+                      placeholder="Enter URL (e.g., stripe.com)"
                       className="w-full pl-14 pr-28 sm:pr-36 py-5 glass rounded-2xl text-lg focus:border-accent/50 focus:ring-2 focus:ring-accent/20 smooth placeholder:text-secondary/50"
                       disabled={loading}
                     />
@@ -872,7 +872,7 @@ export default function Home() {
                         disabled={loading || !url}
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
-                        className="px-6 py-2.5 bg-accent hover:bg-accent/90 disabled:bg-secondary/20 disabled:cursor-not-allowed text-white font-semibold rounded-xl smooth flex items-center gap-2"
+                        className="px-4 sm:px-6 py-2.5 bg-accent hover:bg-accent/90 disabled:bg-secondary/20 disabled:cursor-not-allowed text-white font-semibold rounded-xl smooth flex items-center gap-2"
                       >
                         {loading ? (
                           <>
