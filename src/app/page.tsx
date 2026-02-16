@@ -99,11 +99,41 @@ const categoryIcons: { [key: string]: React.ElementType } = {
 };
 
 // Affiliate alternatives mapping (subtle suggestions)
+// Note: URLs with #affiliate-[name] are placeholders — replace with actual affiliate links after signup
 const affiliateAlternatives: { [key: string]: { text: string; url: string } } = {
-  'WordPress': { text: 'Try Webflow', url: 'https://webflow.com' },
-  'Heroku': { text: 'Try Vercel', url: 'https://vercel.com' },
-  'Google Analytics': { text: 'Try Plausible', url: 'https://plausible.io' },
+  // Hosting alternatives
+  'Heroku': { text: 'Try Vercel', url: '#affiliate-vercel' },
+  'AWS': { text: 'Try DigitalOcean', url: '#affiliate-digitalocean' },
+  'GitHub Pages': { text: 'Try Netlify', url: '#affiliate-netlify' },
+  'Render': { text: 'Try Railway', url: '#affiliate-railway' },
+  
+  // Analytics alternatives
+  'Google Analytics': { text: 'Try Plausible Analytics', url: '#affiliate-plausible' },
+  'Hotjar': { text: 'Try Plausible Analytics', url: '#affiliate-plausible' },
+  'Mixpanel': { text: 'Try PostHog', url: '#affiliate-posthog' },
+  
+  // CMS alternatives
+  'WordPress': { text: 'Try Webflow', url: '#affiliate-webflow' },
+  'Squarespace': { text: 'Try Webflow', url: '#affiliate-webflow' },
+  
+  // UI Library alternatives
   'Bootstrap': { text: 'Try Tailwind CSS', url: 'https://tailwindcss.com' },
+  'Material UI': { text: 'Try Tailwind CSS', url: 'https://tailwindcss.com' },
+  
+  // CDN alternatives
+  'AWS CloudFront': { text: 'Try Cloudflare', url: '#affiliate-cloudflare' },
+  'Fastly': { text: 'Try Cloudflare', url: '#affiliate-cloudflare' },
+  
+  // Monitoring alternatives
+  'New Relic': { text: 'Try Datadog', url: '#affiliate-datadog' },
+  'Bugsnag': { text: 'Try Sentry', url: '#affiliate-sentry' },
+  
+  // Payment alternatives
+  'PayPal': { text: 'Try Stripe', url: 'https://stripe.com' }, // Note: Stripe has no affiliate program
+  
+  // Database alternatives
+  'MongoDB': { text: 'Try Supabase', url: '#affiliate-supabase' },
+  'PlanetScale': { text: 'Try Neon', url: '#affiliate-neon' },
 };
 
 // Animation variants
@@ -1147,7 +1177,7 @@ export default function Home() {
                         />
                       ))}
                     
-                    {/* Special card for missing analytics */}
+                    {/* Special cards for missing/recommended technologies */}
                     {!result.categories['Analytics'] && (
                       <motion.div
                         variants={cardVariants}
@@ -1168,18 +1198,105 @@ export default function Home() {
                           </div>
                         </div>
                         
-                        <a
-                          href="https://plausible.io"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2 p-3 rounded-lg bg-background/40 border border-white/5 hover:border-accent/30 smooth group"
-                        >
-                          <Sparkles className="w-3.5 h-3.5 text-secondary/60 group-hover:text-accent smooth" />
-                          <span className="text-sm font-medium text-secondary/70 group-hover:text-accent smooth flex-1">
-                            Add Plausible Analytics
-                          </span>
-                          <ExternalLink className="w-3 h-3 text-secondary/60 group-hover:text-accent smooth" />
-                        </a>
+                        <div className="space-y-2">
+                          <a
+                            href="#affiliate-plausible"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 p-3 rounded-lg bg-background/40 border border-white/5 hover:border-accent/30 smooth group"
+                          >
+                            <Sparkles className="w-3.5 h-3.5 text-secondary/60 group-hover:text-accent smooth" />
+                            <span className="text-sm font-medium text-secondary/70 group-hover:text-accent smooth flex-1">
+                              Add Plausible Analytics
+                            </span>
+                            <ExternalLink className="w-3 h-3 text-secondary/60 group-hover:text-accent smooth" />
+                          </a>
+                          <p className="text-[10px] text-secondary/50 px-3">
+                            Privacy-friendly, lightweight alternative to Google Analytics
+                          </p>
+                        </div>
+                      </motion.div>
+                    )}
+                    
+                    {/* Recommended: CDN if using cloud hosting without CDN */}
+                    {(result.categories['Hosting'] && !result.categories['CDN']) && (
+                      <motion.div
+                        variants={cardVariants}
+                        initial="hidden"
+                        animate="visible"
+                        transition={{ delay: (Object.keys(result.categories).length + 1) * 0.05 }}
+                        className="glass p-6 rounded-xl border-secondary/20"
+                      >
+                        <div className="flex items-start gap-4 mb-4">
+                          <div className="p-3 rounded-lg bg-secondary/10 border border-secondary/20">
+                            <Globe className="w-5 h-5 text-secondary" />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <h3 className="text-lg font-semibold font-mono mb-1">CDN</h3>
+                            <p className="text-xs text-secondary/70">
+                              Recommended: Add a CDN
+                            </p>
+                          </div>
+                        </div>
+                        
+                        <div className="space-y-2">
+                          <a
+                            href="#affiliate-cloudflare"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 p-3 rounded-lg bg-background/40 border border-white/5 hover:border-accent/30 smooth group"
+                          >
+                            <Sparkles className="w-3.5 h-3.5 text-secondary/60 group-hover:text-accent smooth" />
+                            <span className="text-sm font-medium text-secondary/70 group-hover:text-accent smooth flex-1">
+                              Add Cloudflare CDN
+                            </span>
+                            <ExternalLink className="w-3 h-3 text-secondary/60 group-hover:text-accent smooth" />
+                          </a>
+                          <p className="text-[10px] text-secondary/50 px-3">
+                            Speed up your site globally with edge caching
+                          </p>
+                        </div>
+                      </motion.div>
+                    )}
+                    
+                    {/* Recommended: Monitoring if not detected */}
+                    {!result.categories['Monitoring'] && Object.keys(result.categories).length > 3 && (
+                      <motion.div
+                        variants={cardVariants}
+                        initial="hidden"
+                        animate="visible"
+                        transition={{ delay: (Object.keys(result.categories).length + 2) * 0.05 }}
+                        className="glass p-6 rounded-xl border-secondary/20"
+                      >
+                        <div className="flex items-start gap-4 mb-4">
+                          <div className="p-3 rounded-lg bg-secondary/10 border border-secondary/20">
+                            <Eye className="w-5 h-5 text-secondary" />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <h3 className="text-lg font-semibold font-mono mb-1">Monitoring</h3>
+                            <p className="text-xs text-secondary/70">
+                              Recommended: Add error tracking
+                            </p>
+                          </div>
+                        </div>
+                        
+                        <div className="space-y-2">
+                          <a
+                            href="#affiliate-sentry"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 p-3 rounded-lg bg-background/40 border border-white/5 hover:border-accent/30 smooth group"
+                          >
+                            <Sparkles className="w-3.5 h-3.5 text-secondary/60 group-hover:text-accent smooth" />
+                            <span className="text-sm font-medium text-secondary/70 group-hover:text-accent smooth flex-1">
+                              Add Sentry Monitoring
+                            </span>
+                            <ExternalLink className="w-3 h-3 text-secondary/60 group-hover:text-accent smooth" />
+                          </a>
+                          <p className="text-[10px] text-secondary/50 px-3">
+                            Catch errors before your users report them
+                          </p>
+                        </div>
                       </motion.div>
                     )}
                   </motion.div>
